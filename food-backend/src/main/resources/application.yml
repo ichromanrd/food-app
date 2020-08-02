@@ -1,5 +1,10 @@
+spring.profiles.active: local
+server.port: 11000
+
+---
 
 spring:
+  profiles: local
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -7,6 +12,27 @@ spring:
     password: password
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
 
-server:
-  port: 11000
+secret-key: 12345
+
+my-config:
+  config-1: config1
+  config-2: config2
+
+---
+
+spring:
+  profiles: local-mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useTimezone=true&serverTimezone=GMT
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 12345678
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+secret-key: abcd1234

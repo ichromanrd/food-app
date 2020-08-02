@@ -31,7 +31,7 @@ public class FoodController {
         return new ResponseEntity<>(foodService.listFood(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping(value = "/get/{id}")
     public ResponseEntity<Food> getOneFood(@PathVariable("id") Long id) {
         return new ResponseEntity<>(foodService.getFood(id), HttpStatus.OK);
     }

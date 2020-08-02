@@ -30,6 +30,11 @@ public class FoodService {
     }
 
     public void saveFood(Food food) {
-        foodRepository.save(food);
+        // food.id = null || food.id != null && not exist -> create new
+        // food.id != null || food.id exist -> update
+        // food id = 1, type = A, price 500
+        // food id = 1, type = A, price = 600 -> JPA partial update
+        foodRepository.save(food); // save & update
+        // update food set price = ? where id = ?
     }
 }
